@@ -10,7 +10,7 @@ module Pay
       end
 
       def create_stripe_subscription(name, plan, options={})
-        stripe_sub   = customer.subscriptions.create(plan: plan, trial_from_plan: true)
+        stripe_sub   = customer.subscriptions.create(plan: plan, trial_end: options[:trial_ends_at].to_i)
         subscription = create_subscription(stripe_sub, 'stripe', name, plan)
         subscription
       end
