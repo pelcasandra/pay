@@ -24,7 +24,7 @@ module Pay
         subscription = processor_subscription
         subscription.plan = plan
         subscription.prorate = prorate
-        subscription.trial_end = on_trial? ? trial_ends_at : 'now'
+        subscription.trial_end = on_trial? ? trial_ends_at.to_i : 'now'
         subscription.quantity = quantity if quantity?
         subscription.save
       end
